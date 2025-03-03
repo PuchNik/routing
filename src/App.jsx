@@ -4,6 +4,8 @@ import MainPage from "./pages/MainPage.jsx";
 import CatalogPage from "./pages/CatalogPage.jsx";
 import ContactsPage from "./pages/ContactsPage.jsx";
 import NavBar from "./components/NavBar.jsx";
+import Product from "./components/Product.jsx";
+import Test from "./pages/Test.jsx";
 
 export default function App() {
 
@@ -12,7 +14,9 @@ export default function App() {
             <NavBar/>
             <Routes>
                 <Route path={'/'} element={<MainPage/>}/>
-                <Route path={'/catalog'} element={<CatalogPage/>}/>
+                <Route path={'/catalog'} element={<CatalogPage/>}>
+                    <Route path={'product/:productID'} element={<Product/>}/>
+                </Route>
                 <Route path={'/contacts'} element={<ContactsPage/>}/>
             </Routes>
         </>
