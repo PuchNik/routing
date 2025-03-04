@@ -5,7 +5,8 @@ import CatalogPage from "./pages/CatalogPage.jsx";
 import ContactsPage from "./pages/ContactsPage.jsx";
 import NavBar from "./components/NavBar.jsx";
 import Product from "./components/Product.jsx";
-import Test from "./pages/Test.jsx";
+import NotFound from "./pages/NotFound.jsx";
+
 
 export default function App() {
 
@@ -18,6 +19,8 @@ export default function App() {
                     <Route path={'product/:productID'} element={<Product/>}/>
                 </Route>
                 <Route path={'/contacts'} element={<ContactsPage/>}/>
+
+                <Route path={'*'} element={<NotFound/>}/>
             </Routes>
         </>
     )

@@ -1,11 +1,8 @@
 import {Link, Outlet} from "react-router-dom";
+import {dataBase} from "../helpers/dataBase.js";
 
 export default function CatalogPage() {
-    const fetchProductsList = () => [
-        {id: 1, name: 'Телевизор'},
-        {id: 2, name: 'Смартфон'},
-        {id: 3, name: 'Планшет'},
-    ]
+    const fetchProductsList = () => dataBase.productList
 
     return (
         <div>
