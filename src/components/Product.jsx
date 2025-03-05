@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import NotFound from "../pages/NotFound.jsx";
 import {dataBase} from "../helpers/dataBase.js";
 import {useEffect, useState} from "react";
@@ -11,18 +11,27 @@ const fetchProducts = (id) => new Promise((resolve) => {
 
 export default function Product() {
     const [product, setProduct] = useState(null)
+    const [isLoadingTimeOut, setIsLoadingTimeOut] = useState(false)
+    const [isProductLoaded, setIsProductLoaded] = useState(false)
+
     const {productID} = useParams();
+    const navigate = useNavigate()
 
     useEffect(() => {
-        let isLoadingTimeOut = false
 
         setTimeout(() => {
-            isLoadingTimeOut = true
+            setIsLoadingTimeOut(true)
+            navigate('/product-load-error')
         }, 5000)
         fetchProducts(productID).then((loadedProduct) => {
+            setIsProductLoaded(true)
             setProduct(loadedProduct)
         })
-    }, []);
+        .finally(() => {
+            setIsLoadingTimeOut(false)
+            setIsProductLoaded(false)
+        })
+    }, [productID, navigate]);
 
     if (!product) {
         return <NotFound/>

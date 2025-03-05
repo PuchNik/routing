@@ -6,6 +6,7 @@ import ContactsPage from "./pages/ContactsPage.jsx";
 import NavBar from "./components/NavBar.jsx";
 import Product from "./components/Product.jsx";
 import NotFound from "./pages/NotFound.jsx";
+import ProductLoadedError from './pages/ProductLoadedError.jsx';
 
 
 export default function App() {
@@ -19,6 +20,7 @@ export default function App() {
                     <Route path={'product/:productID'} element={<Product/>}/>
                 </Route>
                 <Route path={'/contacts'} element={<ContactsPage/>}/>
+                <Route path={'/product-load-error'} element={<ProductLoadedError/>}/>
 
                 <Route path={'*'} element={<NotFound/>}/>
             </Routes>
